@@ -220,6 +220,8 @@ var jen = function(jen) {
 
 			var stroke, clone, bclone, size, oldX, oldY, isDrawing;
 
+			this.setBounds(0,0,stageW, stageH);
+
 			//users can change the brush stroke to their desired color and size
 
 			if (not(color)) color = "black";
@@ -235,17 +237,17 @@ var jen = function(jen) {
 			size = startSize;
 
 			// add handler for stage mouse events:
-			stage.on("stagemousedown", function(event) {
+			stage.on('stagemousedown', function(event) {
 				isDrawing = true;
-			}) ;    
+			});    
 
 			blob = new createjs.Shape();
 			this.addChild(blob);
 			blob.alpha=0.5;
 		      
-			stage.on("stagemousemove", function (evt) {
+			stage.on('stagemousemove', function (evt) {
 				
-				if (isDrawing && oldX) {
+				if (isDrawing == true && oldX) {
 
 					size -= sizeIncrement;
 					
@@ -272,7 +274,7 @@ var jen = function(jen) {
 			});
 
 
-			stage.on("stagemouseup", function(event) {
+			stage.on('stagemouseup', function(event) {
 				isDrawing = false;
 				size = startSize; 
 
